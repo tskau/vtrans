@@ -1,0 +1,28 @@
+{
+  "name": "@tskau/vtrans",
+  "version": "0.0.0",
+  "description": "yandex video translation API client written in typescript",
+  "main": "dist/vtrans.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "ts-standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tskau/vtrans.git"
+  },
+  "author": {
+    "name": "mikhail \"synzr\"",
+    "url": "https://github.com/synzr"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/tskau/vtrans/issues"
+  },
+  "homepage": "https://github.com/tskau/vtrans",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.4.5"
+  }
+}
