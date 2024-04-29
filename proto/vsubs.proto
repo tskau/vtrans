@@ -1,0 +1,18 @@
+package yandex.vsubs;
+syntax = "proto3";
+
+message VideoSubtitlesRequest {
+  string original_url = 1;
+  string original_language = 2;
+}
+
+message VideoSubtitlesObject {
+  string original_url = 1;
+  string original_language = 2;
+  string translation_url = 4;
+  string translation_language = 5;
+}
+
+message VideoSubtitlesResponse {
+  repeated VideoSubtitlesObject subtitles = 2;
+}
