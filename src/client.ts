@@ -4,6 +4,7 @@ import * as protobuf from './protobuf'
 import signRequestBody from './signature'
 import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios'
 import crypto from 'node:crypto'
+import shortenUrl from './url-shortener'
 
 const VTRANS_API_PATH = '/video-translation/'
 const VSUBS_API_PATH = '/video-subtitles/'
@@ -92,7 +93,7 @@ export class Client {
   async translate (options: TranslationOptions): Promise<TranslationResult> {
     const videoTranslationRequest = protobuf.vtrans.VideoTranslationRequest
       .encode({
-        originalUrl: options.originalUrl,
+        originalUrl: shortenUrl(options.originalUrl),
         originalLanguage: options.originalLanguage,
         originalDuration: options.originalDuration ?? globals.DEFAULT_ORIGINAL_DURATION,
         translationLanguage: options.translationLanguage,
@@ -138,7 +139,10 @@ export class Client {
 
   async getSubtitles (options: SubtitlesOptions): Promise<SubtitlesResult> {
     const videoSubtitlesRequest = protobuf.vsubs.VideoSubtitlesRequest
-      .encode(options)
+      .encode({
+        originalUrl: shortenUrl(options.originalUrl),
+        originalLanguage: options.originalLanguage
+      })
       .finish()
 
     const response = await this.axios.post(
