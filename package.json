@@ -1,6 +1,6 @@
 {
   "name": "@tskau/vtrans",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "yandex video translation API client written in typescript",
   "main": "dist/vtrans.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "protobufjs": "^7.2.6"
   }
 }

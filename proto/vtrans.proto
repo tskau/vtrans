@@ -10,10 +10,10 @@ message VideoTranslationRequest {
   string original_url = 3;
   string original_language = 8;
   double original_duration = 6;
-  string translated_language = 14;
+  string translation_language = 14;
   bool is_first_request = 5;
   bool is_help_objects_included = 9;
-  repeated VideoTranslationHelpObject helpObjects = 10;
+  repeated VideoTranslationHelpObject help_objects = 10;
 }
 
 enum VideoTranslationResponseStatus {

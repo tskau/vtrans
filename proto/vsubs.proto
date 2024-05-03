@@ -7,9 +7,9 @@ message VideoSubtitlesRequest {
 }
 
 message VideoSubtitlesObject {
-  string original_url = 1;
-  string original_language = 2;
-  string translation_url = 4;
+  string original_subtitles_url = 2;
+  string translation_subtitles_url = 4;
+  string original_language = 1;
   string translation_language = 5;
 }
 
