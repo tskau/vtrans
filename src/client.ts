@@ -1,4 +1,5 @@
 import { SubtitlesError, TranslationError } from './errors'
+import { Content } from './content'
 import * as globals from './globals'
 import * as protobuf from './protobuf'
 import signRequestBody from './signature'
@@ -21,7 +22,7 @@ export interface TranslationOptions {
 }
 
 export interface TranslationResult {
-  translation?: { url: string, duration: number }
+  translation?: { content: Content, duration: number }
   remainingTime?: number
   status: 'SUCCESS' | 'WORK_IN_PROGRESS'
 }
@@ -32,13 +33,13 @@ export interface SubtitlesOptions {
 }
 
 export interface Subtitles {
-  subtitlesLanguage: string
-  subtitlesUrl: string
+  language: string
+  content: Content
 }
 
 export interface SubtitlesResult {
-  originalVariant?: Subtitles
-  translationVariants?: Subtitles[]
+  original: Subtitles
+  translations: Subtitles[]
 }
 
 export class Client {
@@ -127,7 +128,7 @@ export class Client {
       case 'SUCCESS':
         return {
           translation: {
-            url: response.data.translationUrl,
+            content: new Content(response.data.translationUrl),
             duration: response.data.translationDuration
           },
           status: 'SUCCESS'
@@ -165,13 +166,13 @@ export class Client {
     }
 
     return {
-      originalVariant: {
-        subtitlesLanguage: response.data.subtitles[0].originalLanguage,
-        subtitlesUrl: response.data.subtitles[0].originalSubtitlesUrl
+      original: {
+        language: response.data.subtitles[0].originalLanguage,
+        content: new Content(response.data.subtitles[0].originalSubtitlesUrl)
       },
-      translationVariants: response.data.subtitles.map((subtitle: any) => ({
-        subtitlesLanguage: subtitle.translationLanguage,
-        subtitlesUrl: subtitle.translationSubtitlesUrl
+      translations: response.data.subtitles.map((subtitle: any) => ({
+        language: subtitle.translationLanguage,
+        content: new Content(subtitle.translationSubtitlesUrl)
       }))
     }
   }
