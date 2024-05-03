@@ -1,5 +1,16 @@
-# vtrans
+# @tskau/vtrans
+
 yandex video translation API client written in typescript
+<img align="right" height="50" src="./assets/vtrans.svg">
+
+### disclaimer
+
+this library is UNOFFICIAL and NOT MADE OR AUTHORIZED by
+[Yandex N.V.](https://ir.yandex/) or [ООО "ЯНДЕКС" (Yandex LLC)](https://yandex.ru/company/main).
+
+this library is based on the results of reverse engineering
+and implements a client for a private API that is
+NOT INTENDED for use in software other than [yandex.browser](https://browser.yandex.com/).
 
 ### installation
 
